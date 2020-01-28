@@ -88,7 +88,19 @@ function randomColor() {
 
 }
 
+/*use anonymous function within setInterval to call both random color and printQuote with 10 second interval */
+function automaticUpdate() {
+  setInterval(function () {
+      randomColor();
+      printQuote();
+    },
+    10000);
+
+}
+
+
 printQuote()
+automaticUpdate()
 
 /***
  * click event listener for the print quote button
