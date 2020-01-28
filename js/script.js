@@ -37,13 +37,9 @@ const quotes = [{
  ***/
 function getRandomQuote(quotes) {
   /*use random number and multiply by length of quotes array.  Then use bracket notation to access random quote from quotes array */
-  let randomQuote = Math.floor(Math.random() * quotes.length)
-  return quotes[randomQuote];
-
+  let randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
 }
-
-
-
 
 /***
  * `printQuote` function
@@ -52,26 +48,21 @@ function printQuote() {
   //assign quoteObject the return value of getRandomQuote function
   let quoteObject = getRandomQuote(quotes);
   //build quote string with HTML and string templates
-  let quoteString = `<p class="quote"> ${quoteObject.quote} </p> 
-  <p class="source"> ${quoteObject.source}`;
+  let quoteString = `<p class="quote"> ${quoteObject.quote} </p> <p class="source"> ${quoteObject.source}`;
 
   /*test if there is citation property and add it to quote string if it exists */
 
   if (quoteObject['citation'] !== undefined) {
-    quoteString += `<span class="citation"> ${quoteObject.citation} </span>`
+    quoteString += `<span class="citation"> ${quoteObject.citation} </span>`;
   }
 
   /*test if there is a year property and add it to quote string if it exists */
-
   if (quoteObject['year'] !== undefined) {
-    quoteString += `<span class="year"> ${quoteObject.year} </span>`
+    quoteString += `<span class="year"> ${quoteObject.year} </span>`;
   }
 
   quoteString += '</p>';
-
   document.getElementById('quote-box').innerHTML = quoteString;
-
-
 }
 
 function randomColor() {
@@ -83,7 +74,6 @@ function randomColor() {
   //creates rgb value string and assigns background color value of string
 
   let rgbValue = `rgb( ${red}, ${green}, ${blue})`;
-
   document.body.style.backgroundColor = rgbValue;
 
 }
@@ -95,7 +85,6 @@ function automaticUpdate() {
       printQuote();
     },
     10000);
-
 }
 
 
