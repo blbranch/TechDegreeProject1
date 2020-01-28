@@ -53,23 +53,26 @@ function printQuote() {
   <p class="source"> ${quoteObject.source}`
 
   if (quoteObject['citation'] !== undefined) {
-    quoteString += `<span class="citation" ${quoteObject.citation} </span>`
+    quoteString += `<span class="citation"> ${quoteObject.citation} </span>`
   }
 
   if (quoteObject['year'] !== undefined) {
-    quoteString += `<span class="year" ${quoteObject.year} </span>`
+    quoteString += `<span class="year"> ${quoteObject.year} </span>`
   }
 
   quoteString += '</p>';
-  return quoteString;
+  //return quoteString;
+  console.log(quoteString)
+  document.getElementById('quote-box').innerHTML = quoteString;
+
 
 }
 
-printQuote()
+//printQuote()
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
