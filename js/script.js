@@ -47,8 +47,25 @@ function getRandomQuote(quotes) {
 /***
  * `printQuote` function
  ***/
+function printQuote() {
+  let quoteObject = getRandomQuote(quotes);
+  let quoteString = `<p class="quote"> ${quoteObject.quote} </p> 
+  <p class="source"> ${quoteObject.source}`
 
+  if (quoteObject['citation'] !== undefined) {
+    quoteString += `<span class="citation" ${quoteObject.citation} </span>`
+  }
 
+  if (quoteObject['year'] !== undefined) {
+    quoteString += `<span class="year" ${quoteObject.year} </span>`
+  }
+
+  quoteString += '</p>';
+  return quoteString;
+
+}
+
+printQuote()
 
 /***
  * click event listener for the print quote button
