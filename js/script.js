@@ -36,6 +36,7 @@ const quotes = [{
  * `getRandomQuote` function
  ***/
 function getRandomQuote(quotes) {
+  /*use random number and multiply by length of quotes array.  Then use bracket notation to access random quote from quotes array */
   let randomQuote = Math.floor(Math.random() * quotes.length)
   return quotes[randomQuote];
 
@@ -48,31 +49,54 @@ function getRandomQuote(quotes) {
  * `printQuote` function
  ***/
 function printQuote() {
+  //assign quoteObject the return value of getRandomQuote function
   let quoteObject = getRandomQuote(quotes);
+  //build quote string with HTML and string templates
   let quoteString = `<p class="quote"> ${quoteObject.quote} </p> 
-  <p class="source"> ${quoteObject.source}`
+  <p class="source"> ${quoteObject.source}`;
+
+  /*test if there is citation property and add it to quote string if it exists */
 
   if (quoteObject['citation'] !== undefined) {
     quoteString += `<span class="citation"> ${quoteObject.citation} </span>`
   }
+
+  /*test if there is a year property and add it to quote string if it exists */
 
   if (quoteObject['year'] !== undefined) {
     quoteString += `<span class="year"> ${quoteObject.year} </span>`
   }
 
   quoteString += '</p>';
-  //return quoteString;
-  console.log(quoteString)
+
   document.getElementById('quote-box').innerHTML = quoteString;
 
 
 }
 
-//printQuote()
+function randomColor() {
+  //uses random number and multiples by 255 possible color combos
+  let red = Math.floor(Math.random() * 255);
+  let green = Math.floor(Math.random() * 255);
+  let blue = Math.floor(Math.random() * 255)
+
+  //creates rgb value string and assigns background color value of string
+
+  let rgbValue = `rgb( ${red}, ${green}, ${blue})`;
+
+  document.body.style.backgroundColor = rgbValue;
+
+}
+
+printQuote()
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false)
+//also call randomColor function on button click
+document.getElementById('load-quote').addEventListener("click", randomColor, false)
+
+//document.addEventListener("click", document.body.style.backgroundColor = randomColor(), false);
