@@ -13,7 +13,7 @@ project 1 - A Random Quote Generator
 const quotes = [{
   quote: "God cannot give us a happiness and peace apart from Himself, because it is not there. There is no such thing.",
   source: "C.S. Lewis",
-  date: 1952,
+  year: 1952,
   citation: "Mere Christianity"
 }, {
   quote: "You have made us for yourself, O Lord, and our hearts are restless until they rest in you.",
@@ -30,12 +30,17 @@ const quotes = [{
   quote: "Humility is the beginning of true intelligence.",
   source: "John Calvin"
 }];
-console.log(quotes);
 
 
 /***
  * `getRandomQuote` function
  ***/
+function getRandomQuote(quotes) {
+  let randomQuote = Math.floor(Math.random() * quotes.length)
+  return quotes[randomQuote];
+
+}
+
 
 
 
@@ -50,4 +55,4 @@ console.log(quotes);
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//document.getElementById('load-quote').addEventListener("click", printQuote, false);
