@@ -16,7 +16,8 @@ const quotes = [
       "God cannot give us a happiness and peace apart from Himself, because it is not there. There is no such thing.",
     source: "C.S. Lewis",
     year: 1952,
-    citation: "Mere Christianity"
+    citation: "Mere Christianity",
+    image: "img/csLewis.jpg"
   },
   {
     quote:
@@ -58,7 +59,7 @@ function getRandomQuote(quotes) {
 function printQuote() {
   //assign quoteObject the return value of getRandomQuote function
   let quoteObject = getRandomQuote(quotes);
-  //build quote string with HTML and string templates
+  //build quote string with HTML and template literals
   let quoteString = `<p class="quote"> ${quoteObject.quote} </p> <p class="source"> ${quoteObject.source}`;
   let imageSrc = quoteObject.image;
 
@@ -71,30 +72,38 @@ function printQuote() {
   /*test if there is a year property and add it to quote string if it exists */
   if (quoteObject["year"] !== undefined) {
     quoteString += `<span class="year"> ${quoteObject.year} </span>`;
-  }
+  } 
 
-  //if (quoteObject.image !== undefined) {
-  //image.src = quoteObject.image;
-  // }
-
+  //closes quote string and sets the quote box to display the quote and other data elements where applicable.
   quoteString += "</p>";
   document.getElementById("quote-box").innerHTML = quoteString;
-  document.getElementById("headshot").src = imageSrc;
-}
+
+
+  /*test if there is an image in quote object and either set display to none 
+    or set the src of image to the location for image and set display to inital
+  */
+  if (imageSrc == undefined) {
+    document.getElementById("headshot").style.display = "none";
+    } else {
+    document.getElementById("headshot").src = imageSrc;
+    document.getElementById("headshot").style.display = "initial";
+
+   }
+ }
 
 function randomColor() {
-  //uses random number and multiples by 255 possible color combos
+  //uses random number and multiples by 255 possible color combos to render random background color
   let red = Math.floor(Math.random() * 255);
   let green = Math.floor(Math.random() * 255);
   let blue = Math.floor(Math.random() * 255);
 
   //creates rgb value string and assigns background color value of string
 
-  let rgbValue = `rgb( ${red}, ${green}, ${blue})`;
+  let rgbValue = `rgb(${red}, ${green}, ${blue})`;
   document.body.style.backgroundColor = rgbValue;
 }
 
-/*use anonymous function within setInterval to call both random color and printQuote with 10 second interval */
+/*use anonymous function within setInterval to call both random color and printQuote on a reoccuring 10 second interval */
 function automaticUpdate() {
   setInterval(function() {
     randomColor();
@@ -110,12 +119,8 @@ automaticUpdate();
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
+ //added anonymous function to call both printQuote and randomColor function
 document
   .getElementById("load-quote")
-  .addEventListener("click", printQuote, false);
-//also call randomColor function on button click
-document
-  .getElementById("load-quote")
-  .addEventListener("click", randomColor, false);
+  .addEventListener("click", function () {printQuote(), randomColor()}, false);
 
-//document.addEventListener("click", document.body.style.backgroundColor = randomColor(), false);
