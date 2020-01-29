@@ -32,7 +32,6 @@ const quotes = [
     source: "St. Augustine",
     citation: "City of God",
     tags: ['Ancient Church History']
-
   },
   {
     quote:
@@ -46,6 +45,14 @@ const quotes = [
     source: "John Calvin",
     image: "img/john-calvin-9235788-1-402.jpg",
     tags: ['Reformation','Wisdom']
+  },
+  {
+    quote: `My conscience is captive to the Word of God. I cannot and I will not recant anything for to go against conscience is neither right nor safe. God help me. Amen.`,
+    source: "Martin Luther",
+    citation: "Luther's Trial at the Imperial Diet of Worms",
+    year: 1521,
+    image:  "img/martinLuther.jpg",
+    tags: ['Reformation']
   }
 ];
 
