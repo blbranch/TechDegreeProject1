@@ -53,8 +53,19 @@ const quotes = [
     year: 1521,
     image:  "img/martinLuther.jpg",
     tags: ['Reformation']
+  },
+  {
+    quote:
+      "An individual has not started living until he can rise above the narrow confines of his individualistic concerns to the broader concerns of all humanity.",    
+    source: "Dr. Martin Luther King, Jr.",
+    image: "img/mlk.jpg",
+    tags: ['Justice','Community']  
   }
 ];
+
+
+
+
 
 /***
  * `getRandomQuote` function
