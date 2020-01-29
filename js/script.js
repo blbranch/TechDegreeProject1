@@ -61,8 +61,7 @@ function printQuote() {
   let quoteObject = getRandomQuote(quotes);
   //build quote string with HTML and template literals
   let quoteString = `<p class="quote"> ${quoteObject.quote} </p> <p class="source"> ${quoteObject.source}`;
-  let imageSrc = quoteObject.image;
-
+  
   /*test if there is citation property and add it to quote string if it exists */
 
   if (quoteObject["citation"] !== undefined) {
@@ -78,10 +77,11 @@ function printQuote() {
   quoteString += "</p>";
   document.getElementById("quote-box").innerHTML = quoteString;
 
-
+  
   /*test if there is an image in quote object and either set display to none 
     or set the src of image to the location for image and set display to inital
   */
+  let imageSrc = quoteObject.image;
   if (imageSrc == undefined) {
     document.getElementById("headshot").style.display = "none";
     } else {
@@ -123,6 +123,7 @@ function automaticUpdate() {
   }, 10000);
 }
 
+//call both printQuote and automatic update function upon page load
 printQuote();
 automaticUpdate();
 
