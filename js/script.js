@@ -48,9 +48,9 @@ const quotes = [
  * `getRandomQuote` function
  ***/
 function getRandomQuote(quotes) {
-  /*use random number and multiply by length of quotes array.  Then use bracket notation to access random quote from quotes array */
-  let randomNumber = Math.floor(Math.random() * quotes.length);
-  return quotes[randomNumber];
+  /*call random number function using length of quotes array.  Use bracket notation to access random quote from quotes array */
+  let randomQuote = quotes[getRandomNumber(quotes.length)]; 
+  return randomQuote;
 }
 
 /***
@@ -91,17 +91,29 @@ function printQuote() {
    }
  }
 
+ /***
+ * `randomNumber` function
+ ***/
+function getRandomNumber(upperBound) {
+  let randomNumber = Math.floor(Math.random() * upperBound)
+  return randomNumber;
+}
+
+
+/***
+ * `randomColor` function
+ ***/
 function randomColor() {
-  //uses random number and multiples by 255 possible color combos to render random background color
-  let red = Math.floor(Math.random() * 255);
-  let green = Math.floor(Math.random() * 255);
-  let blue = Math.floor(Math.random() * 255);
+  //calls random number function and multiples by 255 possible color combos to render random background color
+   //creates rgb value string with template literal and assigns background color value of string
 
-  //creates rgb value string and assigns background color value of string
-
-  let rgbValue = `rgb(${red}, ${green}, ${blue})`;
+  let rgbValue = `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`;
   document.body.style.backgroundColor = rgbValue;
 }
+
+/***
+ * `automaticUpdate` function
+ ***/
 
 /*use anonymous function within setInterval to call both random color and printQuote on a reoccuring 10 second interval */
 function automaticUpdate() {
