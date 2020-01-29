@@ -23,24 +23,29 @@ const quotes = [
     quote:
       "You have made us for yourself, O Lord, and our hearts are restless until they rest in you.",
     source: "St. Augustine",
-    citation: "Confessions"
+    citation: "Confessions",
+    tags: ['Ancient Church History']
   },
   {
     quote:
       "The good man, though a slave, is free; the wicked, though he reigns, is a slave.",
     source: "St. Augustine",
-    citation: "City of God"
+    citation: "City of God",
+    tags: ['Ancient Church History']
+
   },
   {
     quote:
       "Faith is taking the first step even when you don't see the whole staircase.",
     source: "Dr. Martin Luther King, Jr.",
-    image: "img/mlk.jpg"
+    image: "img/mlk.jpg",
+    tags: ['Faith']
   },
   {
     quote: "Humility is the beginning of true intelligence.",
     source: "John Calvin",
-    image: "img/john-calvin-9235788-1-402.jpg"
+    image: "img/john-calvin-9235788-1-402.jpg",
+    tags: ['Reformation','Wisdom']
   }
 ];
 
@@ -65,7 +70,7 @@ function printQuote() {
   /*test if there is citation property and add it to quote string if it exists */
 
   if (quoteObject["citation"] !== undefined) {
-    quoteString += `<span class="citation"> ${quoteObject.citation} </span>`;
+    quoteString += `<span class="citation">${quoteObject.citation}</span>`;
   }
 
   /*test if there is a year property and add it to quote string if it exists */
@@ -74,8 +79,32 @@ function printQuote() {
   } 
 
   //closes quote string and sets the quote box to display the quote and other data elements where applicable.
-  quoteString += "</p>";
+
+  
+  /*if tags property exist then iterate and add tags to quoteString with a line break.  
+    Test last item in array to avoid extra comma*/
+  if (quoteObject['tags'] !== undefined) {
+    quoteString += `<br> <span class="tags"> tags: `
+    for (let i = 0; i < quoteObject['tags'].length; i++) {
+      let quoteTag = quoteObject['tags'][i];
+      if (i < quoteObject['tags'].length -1) {
+        quoteString += `${quoteTag}, `;
+      } else {
+        quoteString += `${quoteTag}`;
+      }
+      
+    }
+    quoteString += "</span>"
+  }
+
+    quoteString += "</p>";
+    console.log(quoteString);
+
+
+    
   document.getElementById("quote-box").innerHTML = quoteString;
+
+
 
   
   /*test if there is an image in quote object and either set display to none 
