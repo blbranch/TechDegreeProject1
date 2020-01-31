@@ -76,6 +76,10 @@ function getRandomQuote(quotes) {
  * `printQuote` function
  ***/
 function printQuote() {
+
+  //if show another quote button is pressed - reset clock on automatic update interval
+  clearInterval(interval);
+  
   //assign quoteObject the return value of getRandomQuote function
   let quoteObject = getRandomQuote(quotes);
   //build quote string with HTML and template literals
@@ -145,11 +149,10 @@ function randomColor() {
  ***/
 
 /*use anonymous function within setInterval to call both random color and printQuote on a reoccuring 10 second interval */
+const interval = setInterval(automaticUpdate, 10000);
 function automaticUpdate() {
-  setInterval(function() {
     randomColor();
-    printQuote();
-  }, 10000);
+    printQuote();  
 }
 
 //call both printQuote and automatic update function upon page load
